@@ -16,5 +16,24 @@ Outbound Interface    FastEthernet0/0
 Это не значит, что задание сделано правильно, просто на данном этапе сложно иначе
 проверять результат.
 """
-
+'''
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+ospf = {'Prefix':ospf_route.split()[0],'AD/Metric':ospf_route.split()[1].strip("[]"),'Next-Hop':ospf_route.split()[3], 'Last update':ospf_route.split()[4], 'Outbound Interface':ospf_route.split()[5]}
+print(ospf)
+ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+ospf = {'Prefix':ospf_route.split()[0],'AD/Metric':ospf_route.split()[1].strip("[]"),'Next-Hop':ospf_route.split()[3], 'Last update':ospf_route.split()[4], 'Outbound Interface':ospf_route.split()[5]}
+out = "{:<20} {:<20}\n"*4
+print(out.format('Prefix',ospf_route.split()[0],'AD/Metric',ospf_route.split()[1].strip("[]"),'Next-Hop',ospf_route.split()[3], 'Last update',ospf_route.split()[4], 'Outbound Interface',ospf_route.split()[5]))
+
+'''
+ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+out = "{:<20} {:<20}\n"*5
+print(out.format
+      ('Prefix',ospf_route.split()[0].strip(','),
+       'AD/Metric',ospf_route.split()[1].strip("[]"),
+       'Next-Hop',ospf_route.split()[3].strip(','), 'Last update',
+       ospf_route.split()[4].strip(','), 'Outbound Interface',
+       ospf_route.split()[5]).strip(','))
+
+
+
