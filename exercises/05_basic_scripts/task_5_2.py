@@ -30,3 +30,22 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+#ipm = "10.1.1.0/24"
+ipm = input("Insert ip/mask")
+
+ip = ipm.split('.')
+temp = ip[3].split('/')
+ip[3] = temp[0]
+ma = temp[1]
+outp = '''
+    Network:
+    {0:<8}  {1:<8}  {2:<8}  {3:<8}
+    {0:08b}  {1:08b}  {2:08b}  {3:08b}
+    '''
+    
+                        #print('{:8}  {:8}  {:8} {:8}'.format(ip[0],ip[1],ip[2],ip[3]))
+stri = '1' * int(ma) + '0' * (32 - int(ma))
+print(outp.format(int(ip[0]),int(ip[1]),int(ip[2]),int(ip[3])))
+                        #print(outp2.format(int(ip[0]),int(ip[1]),int(ip[2]),int(ip[3]), int(ma)))
+print(f'\n    Mask:\n    /{ma}\n    {int(stri[0:8],2):<8}  {int(stri[8:16],2):<8}  {int(stri[16:24],2):<8}  {int(stri[24:32],2):<8}\n    {stri[0:8]:<8}  {stri[8:16]:<8}  {stri[16:24]:<8}  {stri[24:32]:<8}')
+                        #print(stri[0:7])
