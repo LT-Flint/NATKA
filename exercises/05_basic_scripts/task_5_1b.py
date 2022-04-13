@@ -50,3 +50,8 @@ london_co = {
         "routing": True,
     },
 }
+inp = input("Введите имя устройства:")
+temp = ','.join(london_co[inp])
+inp_param = input(f'Inter parameter from list ({temp}) ')
+
+print(london_co[inp][inp_param])
