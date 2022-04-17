@@ -12,3 +12,17 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+ip_in = input('Insert ip add: ')
+buf = ip_in.split('.')
+
+if ip_in == '0.0.0.0':
+        print('unassigned')
+elif ip_in == '255.255.255.255':
+        print('local broadcast')
+elif int(buf[0]) >= 1 and int(buf[0]) <= 223:
+        print('unicast')
+elif int(buf[0]) > 223 and int(buf[0]) <= 239:
+        print('multicast')
+else:
+        print('unused')
