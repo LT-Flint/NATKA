@@ -14,3 +14,14 @@ Outbound Interface    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+words = ('Prefix','AD/Metric','Next-Hop','Last update','Outbound Interface')
+with open('ospf.txt', 'r') as f:
+   for line in f:
+      line =line.split()
+      print(f'''
+          {words[0]:<20}{line[1]:<}
+          {words[1]:<20}{line[2].strip('[]'):<}
+          {words[2]:<20}{line[4].strip(','):<}
+          {words[3]:<20}{line[5].strip(','):<}
+          {words[4]:<20}{line[6]:<}
+          ''')
