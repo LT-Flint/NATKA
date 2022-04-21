@@ -20,3 +20,11 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+position = 0
+with open('CAM_table.txt') as file:
+    source = file.read().split()
+    for word in source:
+        position += 1
+        if word and word == 'DYNAMIC' and position > 3:
+            print(f'{source[position-3]:8}{source[position-2]:20}{source[position]}')
+

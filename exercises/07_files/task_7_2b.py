@@ -15,5 +15,26 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-
+from sys import argv
 ignore = ["duplex", "alias", "configuration"]
+Flag = False
+
+out_str = ''
+
+with open(argv[1], 'r') as file:
+   for line in file:
+       if line and not line.startswith('!'):
+         for check in ignore:
+             if line.find(check) == -1: 
+                Flag = True
+             else:
+                #print(line)
+                Flag = False 
+                break
+         if Flag:
+            #print(line.rstrip())
+            out_str += '\n' + ''.join(line.rstrip())
+
+with open(argv[2],'w') as wri:
+    wri.write(out_str)
+

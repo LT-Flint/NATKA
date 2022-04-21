@@ -40,3 +40,19 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+position = 0 
+stroke = 0
+li_list = []
+with open('CAM_table.txt') as file:
+    source = file.read().split()
+    for word in source:
+        position += 1
+        if word and word == 'DYNAMIC' and position > 3:
+            #for i as range(3):
+            #li_list[stroke][position-3],li_list[stroke][position-2],li_list[stroke][position] = source[position-3],source[position-2],source[position]
+            li_list.append([int(source[position-3]),source[position-2],source[position]])
+            stroke += 1
+            #print(f'{source[position-3]:8}{source[position-2]:20}{source[position]}')
+#print(sorted(li_list))
+for line in sorted(li_list):
+    print(f'{line[0]:<8}{line[1]:20}{line[2]}')
