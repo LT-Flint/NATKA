@@ -66,7 +66,10 @@ access_config_2 = {
 
 
 def generate_access_config(intf_vlan_mapping, access_template):
-    """
+    for line in intf_vlan_mapping:
+
+
+"""
     intf_vlan_mapping - словарь с соответствием интерфейс-VLAN такого вида:
         {'FastEthernet0/12':10,
          'FastEthernet0/14':11,
