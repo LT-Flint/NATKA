@@ -25,3 +25,24 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+def get_int_vlan_map(config_filename):
+    access_dict = {}
+    trunk_dict = {}
+    flag = False
+    with open(config_filename) as cfg:
+        for line in cfg:
+            line = line.rstrip()
+            if line.startswith("interface"):
+                intf = line.split()[1]
+                flag = False
+            elif 'switchport mode access' in line:
+                flag = True
+            elif "access vlan" in line:
+                flag = False
+                access_dict[intf] = int(line.split()[-1])
+            elif 'duplex auto' and flag:
+                access_dict[intf] = 1
+            elif "trunk allowed" in line:
+                trunk_dict[intf] = [int(v) for v in line.split()[-1].split(",")]
+        return access_dict, trunk_dict
