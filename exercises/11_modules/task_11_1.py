@@ -34,17 +34,30 @@ R6           Fa 0/2          143           R S I           2811       Fa 0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
+# Напишите здесь свой код :-)
+from pprint import pprint
+
 
 def parse_cdp_neighbors(command_output):
-    """
-    Тут мы передаем вывод команды одной строкой потому что именно в таком виде будет
-    получен вывод команды с оборудования. Принимая как аргумент вывод команды,
-    вместо имени файла, мы делаем функцию более универсальной: она может работать
-    и с файлами и с выводом с оборудования.
-    Плюс учимся работать с таким выводом.
-    """
+    out = {}
+    Env = ''
+    for line in command_output.split('\n'):
+        if line and line.find('show cdp neighbors') != -1:
+            Env = list(line.split('>'))[0]
+        print('='*30)
+        pprint(line)
+        if line and line.startswith('R') and line[1].isdigit():
+            out = {Env:str(line.split()[-2]+line.split()[-1]),line.split()[0]:1}
+    return out#command_output.split('\n')
+#,:str(line.split()[1]+line.split()[2]
+
+
+
+
 
 
 if __name__ == "__main__":
     with open("sh_cdp_n_sw1.txt") as f:
-        print(parse_cdp_neighbors(f.read()))
+        pprint(parse_cdp_neighbors(f.read()))
+
+
