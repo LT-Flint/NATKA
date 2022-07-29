@@ -34,3 +34,18 @@
  '172.21.41.129', '172.21.41.130', '172.21.41.131', '172.21.41.132']
 
 """
+list = ['8.8.4.4', '1.1.1.1-3', '172.21.41.128-172.21.41.132']
+def convert_ranges_to_ip_list(list):
+    result = []
+    for word in list:
+        if word.find('-') != -1:
+            if len(ip = word.split('.')) == 4:
+
+                #ip_result =
+            print(ip)#work
+        else:
+            result.append(word)
+
+    return result
+
+print(convert_ranges_to_ip_list(list))

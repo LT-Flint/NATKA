@@ -73,7 +73,7 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-#from input draw_topology
+from draw_network_graph.py import draw_topology
 #from task_11_1 import parse_cdp_neighbors
 from task_11_2 import create_network_map
 from pprint import pprint
