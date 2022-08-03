@@ -39,13 +39,23 @@ def convert_ranges_to_ip_list(list):
     result = []
     for word in list:
         if word.find('-') != -1:
-            if len(ip = word.split('.')) == 4:
-
+            if len(word.split('.')) == 4:
+                ip1,ip2,ip3,ip4 = word.split('.')
+                ip = ip4.split('-')
                 #ip_result =
-            print(ip)#work
+                #print(ip1,ip2,ip3,ip4)#work
+                for i in range(int(ip[0]),int(ip[1])+1):
+                   sum_ip = ip1+'.'+ip2+'.'+ip3+'.'+str(i)
+                   result.append(sum_ip)
+                   #print(result)
+            else:
+                split_word = word.split('-')
+                ip1,ip2,ip3,*_ = word.split('.')
+                for i in range(int(split_word[0].split('.')[-1]),int(split_word[1].split('.')[-1])+1):
+                   sum_ip = ip1+'.'+ip2+'.'+ip3+'.'+str(i)
+                   result.append(sum_ip)
         else:
             result.append(word)
 
     return result
 
-print(convert_ranges_to_ip_list(list))
